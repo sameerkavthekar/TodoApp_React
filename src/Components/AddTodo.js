@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import Todos from "./Todos";
 
 class AddTodo extends Component {
     state = {

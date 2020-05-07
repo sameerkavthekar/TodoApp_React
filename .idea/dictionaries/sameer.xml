@@ -2,7 +2,9 @@
   <dictionary name="sameer">
     <words>
       <w>axios</w>
+      <w>popupinner</w>
       <w>todos</w>
+      <w>uuidv</w>
     </words>
   </dictionary>
 </component>

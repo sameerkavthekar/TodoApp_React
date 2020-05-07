@@ -4,10 +4,9 @@ import './App.css';
 import Todos from "./Components/Todos";
 import Header from "./Components/Layout/Header";
 import AddTodo from "./Components/AddTodo";
-// import { v4 as uuidv4 } from 'uuid';
 import About from "./Components/Pages/About";
 import axios from "axios";
-
+import { v4 as uuidv4 } from 'uuid';
 class App extends Component {
 
     state = {
@@ -39,9 +38,24 @@ class App extends Component {
     addTodo = (title) => {
         axios.post('https://jsonplaceholder.typicode.com/todos', {
             title,
+            id:uuidv4,
             completed:false
         })
             .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
+    }
+
+    editTodo = (keyId, title) => {
+        axios.put(`https://jsonplaceholder.typicode.com/todos/${keyId}`)
+            .then(res => this.setState({todos: [...this.state.todos.map(todo => {
+                        if(todo.id === keyId) {
+                            todo.title = title
+                        }
+                        return todo;
+                    })]
+                }
+            ))
+        console.log(title)
+        console.log(keyId)
     }
 
     render() {
@@ -53,7 +67,12 @@ class App extends Component {
                         <Route exact path='/' render={props => (
                             <React.Fragment>
                                 <AddTodo addTodo={this.addTodo} />
-                                <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
+                                <Todos
+                                    todos={this.state.todos}
+                                    markComplete={this.markComplete}
+                                    delTodo={this.delTodo}
+                                    editTodo={this.editTodo}
+                                />
                             </React.Fragment>
                         )}>
                         </Route>

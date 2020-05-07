@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Todos from "./Todos";
+import EditTodo from "./EditTodo";
 
 class TodoItem extends Component {
 
@@ -22,6 +22,7 @@ class TodoItem extends Component {
                     <input type="checkbox" onChange={this.props.markComplete.bind
                     (this, id)} /> {' '}
                     { title }
+                    <EditTodo editTodo={this.props.editTodo} keyId={this.props.keyId}/>
                     <button onClick={this.props.delTodo.bind(this,id)} style={btnStyle}>x</button>
                 </p>
             </div>

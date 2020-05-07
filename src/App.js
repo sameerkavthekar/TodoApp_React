@@ -44,16 +44,22 @@ class App extends Component {
             .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
     }
 
-    editTodo = (keyId, title) => {
-        axios.put(`https://jsonplaceholder.typicode.com/todos/${keyId}`)
-            .then(res => this.setState({todos: [...this.state.todos.map(todo => {
-                        if(todo.id === keyId) {
-                            todo.title = title
+    editTodo = (title,keyId) => {
+        axios.put(`https://jsonplaceholder.typicode.com/todos/${keyId}` , {
+                title
+            }
+        )
+            .then(({data}) => {
+                    this.setState(prevSate => {
+                            const {todos} = prevSate
+                            const oldTodoIndex = todos.findIndex(todo => todo.id === data.id)
+                            const newTodo = {...todos[oldTodoIndex], ...data}
+                            todos.splice(oldTodoIndex, 1, newTodo)
+                            return {todos: todos}
                         }
-                        return todo;
-                    })]
+                    )
                 }
-            ))
+            )
         console.log(title)
         console.log(keyId)
     }

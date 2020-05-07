@@ -7,6 +7,7 @@ import AddTodo from "./Components/AddTodo";
 import About from "./Components/Pages/About";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+import CompletedViewer from "./Components/CompletedViewer";
 class App extends Component {
 
     state = {
@@ -79,6 +80,7 @@ class App extends Component {
                                     delTodo={this.delTodo}
                                     editTodo={this.editTodo}
                                 />
+                                <CompletedViewer todos={this.state.todos}/>
                             </React.Fragment>
                         )}>
                         </Route>

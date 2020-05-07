@@ -7,7 +7,7 @@ class TodoItem extends Component {
     getStyle = () => {
         return {
             background: 'f4f4f4',
-            padding: '10px',
+            padding: '30px',
             borderBottom : '1px #ccc dotted',
             textDecoration: this.props.todo.completed ?
                 'line-through' : 'none'
@@ -17,15 +17,18 @@ class TodoItem extends Component {
     render() {
         const { id,title } = this.props.todo;
         return (
-            <div style={this.getStyle()}>
-                <p>
+            <div style={{maxHeight:'83.4px'}}>
+                <div style={this.getStyle()}>
                     <input type="checkbox" onChange={this.props.markComplete.bind
-                    (this, id)} /> {' '}
+                    (this, id)} /> {'  '}
                     { title }
+                </div>
+                <div style={{display:'flex',justifyContent:'right',position:'relative',bottom:'3.4rem',maxWidth:'12rem',float:'right'}}>
                     <EditTodo editTodo={this.props.editTodo} keyId={this.props.keyId}/>
                     <button onClick={this.props.delTodo.bind(this,id)} style={btnStyle}>x</button>
-                </p>
+                </div>
             </div>
+
         );
     }
 }
@@ -43,7 +46,8 @@ const btnStyle = {
     padding: '5px 9px',
     borderRadius: '50%',
     cursor: 'pointer',
-    float: 'right'
+    float: 'right',
+    marginLeft: '32px'
 }
 
 export default TodoItem;

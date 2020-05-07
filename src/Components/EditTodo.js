@@ -14,7 +14,7 @@ class editTodo extends Component {
 
     render() {
         return (
-            <div>
+            <div style={editBtn}>
                 <button onClick={this.togglePopup}>Edit</button>
                 {this.state.isOpen ?
                     <Popup
@@ -27,6 +27,11 @@ class editTodo extends Component {
             </div>
         );
     }
+}
+
+const editBtn = {
+    display: 'flex',
+
 }
 
 export default editTodo;

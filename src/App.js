@@ -74,13 +74,13 @@ class App extends Component {
                         <Route exact path='/' render={props => (
                             <React.Fragment>
                                 <AddTodo addTodo={this.addTodo} />
+                                <CompletedViewer todos={this.state.todos}/>
                                 <Todos
                                     todos={this.state.todos}
                                     markComplete={this.markComplete}
                                     delTodo={this.delTodo}
                                     editTodo={this.editTodo}
                                 />
-                                <CompletedViewer todos={this.state.todos}/>
                             </React.Fragment>
                         )}>
                         </Route>

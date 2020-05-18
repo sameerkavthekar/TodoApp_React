@@ -13,7 +13,7 @@ class TodoItem extends Component {
 	};
 
 	render() {
-		const { _id, title } = this.props.todo;
+		const { title } = this.props.todo;
 		return (
 			<div style={{ maxHeight: "83.4px" }}>
 				<div style={this.getStyle()}>
